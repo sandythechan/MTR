@@ -1,0 +1,105 @@
+/* 
+
+Cascading Style Sheets 
+
+Specify different style
+1. tag : <div>/{body} 
+2. class : [.] 
+3. id : #id
+!! priority : id>class
+
+- margin[space between others] VS padding [inside]
+- border radius, display-grid, grid-template-columns
+- display-flex 
+*/
+
+body{
+    background-image: url("https://wallpapergod.com/images/hd/winnie-the-pooh-1920X1200-wallpaper-t5m3a6p8xjnbe3ku.jpeg");
+    background-size: cover; /* cover whole screen */
+    background-repeat: no-repeat; 
+    height: 100vh; /* view height */ 
+    background-position-x: right; /* move from right (ori:left) */
+
+    /* if the data>size of page : become blank */
+    background-attachment: fixed;
+    /* even there are many data : bg wont leave blank */
+}
+
+
+
+#time {
+    color: white;
+    background-color: navy;
+    font-size: 25px;
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* in result, create 2 kids <div> , which time is parents */
+    /* using flex: which things on same surface: can control in parents id */
+}
+
+/* class can use >1 - the following will follow the latter one*/
+
+.white-box {
+    color: black;
+    background-color: white;
+    font-size: 30px;
+    padding: 8px;
+
+    display: grid;
+    grid-template-columns: 120px auto 40px 130px;
+    align-items: center;
+}
+
+.blue-bg {
+    background-color: lightblue;
+}
+
+/* blue bg will replace white one | if <div "white-box blue-bg"> */
+
+#message-wrapper {
+    padding: 10px;
+    background-color: rgba(0,0,0,0.7); /* mix of 3 colors ; become transparent */
+    width: 50vw; /* restricted the box to 50% of screen */
+    min-width: 400px;
+
+}
+
+#up-message, #down-message {
+    border: 5px solid black;
+    
+}
+
+.destination {
+    grid-column: 1/2;
+}
+
+/* use many times : class */
+.platform {
+    width: 34px;
+    height: 34px;
+    border-radius: 32px; /* orginally square, the angles become dull after adding radius*/
+    background-color: deeppink;
+    text-align: center;
+    color: white;
+    grid-column: 3/4;
+    line-height: normal;
+}
+
+.minute {
+    grid-column: 4/5;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.unit {
+    font-size: 18px;
+    margin-left: 10px;
+    font-weight: normal;
+}
+
+#nav-bar-bg {
+    background-color: deeppink !important;
+}
+

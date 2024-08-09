@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>next-train-panel</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!--bootstrap-->
+    
+    <link href="index.css" rel="stylesheet">
+    <!-- CH-3 href: point to where css at | rel: file type-->
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-light" id="nav-bar-bg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">MTR Next Train</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  將軍澳綫
+                </a>
+                <ul class="dropdown-menu"> 
+                  <li><span class="dropdown-item" onclick="getInfo('NOP')">北角</span></li>
+                  <li><span class="dropdown-item" onclick="getInfo('QUB')">鰂魚涌</span></li>
+                  <li><span class="dropdown-item" onclick="getInfo('YAT')">油塘</span></li>
+                  <li><span class="dropdown-item" onclick="getInfo('TIK')">調景嶺</span></li>
+                  <li><span class="dropdown-item" onclick="getInfo('LHP')">日出康城</span></li>
+                  <li><span class="dropdown-item" onclick="getInfo('HAH')">坑口</span></li>
+                  <li><span class="dropdown-item" onclick="getInfo('POA')">寶琳</span></li>
+                  <!--onclick: find the function in js and execute it-->
+                  <!-- DOM Events: -->
+
+                </ul>
+              </li>
+
+            </ul>
+            
+          </div>
+        </div>
+    </nav>
+    
+    <div id="message-wrapper">
+    <div id='up-message'></div>
+    <div id='down-message'></div>
+    <!--id is a no, can be random but must be unique-->
+    <!--if the name>1 word: first-number-->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!--bootstrap : our CSS must behind this : the behind one will be replaced-->
+
+    <script src="index.js"></script> <!--used to include an external js file-->
+    <!-- CH-3 src: pointing where js at-->    
+    <!--when html is loaded, browser will also load + execute js in file-->
+</body>
+</html>
+
+<!--
+    CH-1
+    html : skin and decoration [<> </> | body/head] - MUST
+    css : skin and decoration  -    #id {
+                                    background-color : pink;
+                                    }
+    javascript : algorithm, record, interaction - get data from database
+
+    CH-2 Developers Tools
+    Elements : change html & css - foresee the outcome
+    Console : show the algorithm result of code from javascript 
+    Network : show the file that builds up a website + conversation with server
+
+    CH-3 link css&js to html
+
+    check whether js is correctly link to html
+    - write [console.log(1234)] in js: will print in console
+    - without ''/"" (string) : js consider it as variable 
+
+    html id <div> 
+    - like a basket: putting things tgt
+    - write [document.getElementById('number')] in js
+    - doc: the doc linking ; getElementById : find id () in html
+
+    [document.getElementById('number').innerHTML]
+    - .innerHTML : pull out the things inside that code
+    - add [.innerHTML+"11111"]/delete things in object
+    
+    CH-4 API
+    - Application Programming Interface e.g. link
+    format: https://data.gov.hk/transport?line=AEL&sta=HOK 
+    e.g. ABCrestaurant teaset? main=bread&snacks=fries&dessert=cake
+        - Query Parameter: website?section=choice&section=choice
+        - Path Parameter: website/section/choice/section/choice
+
+    CH-5 Variable 
+
+    a. Variables
+        1. const: const a=1  [X a=2]
+        2. let: let b=1 | b=2
+        3. var: var c=1 | c=3 (older version of let)
+
+    b. Types
+        1. String: ''/""
+        2. Number: integer, float
+        3. Boolean: true, false [!==,==,===(also types)]
+
+    c. if-else statement
+        1.  if(condition){
+                ();
+            } else {
+                ();
+            }
+
+    CH-6 Structures
+    
+    a. Array
+    b. Object (dictationary in Python)
+        - key-value pair e.g. const people = {name:"yu", age:12}
+        - get data: people["name"] / people.name
+
+    c. a+b 
+        - let peopleList=[
+            {name:"yu",age:12}
+            {name:"kiu",age:13}
+            {name:"kevin,age:14"}
+            ]
+        - to get yu's age: peopleList[2].age / peopleList[2]['age']
+
+    d. Function
+
+        1. function showAge(a,b) {
+            const result = a+b
+            return result
+        }
+
+        2. const a=showAge(1,2)
+    
+    CH-7 AP1: fetch & async await
+
+        1. fetch 
+
+        - recap : API = bunch of orders we give to the server
+        - helps us to link to the according server
+
+        async function (){
+            const res = await fetch(‘https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=AEL&sta=HOK’)
+            const json= await res.json() // change the data format 
+            document.getElementById(‘ message ‘).innerHTML＝json.data // take the useful data into HTML
+        }
+
+        2. async await (API 延時問題)
+        - while linking to API, we have to wait
+        - it acts as a sign: remind a code has to be waited 
+            - js can process other codes (jump out this function) and skip this code first
+            - wait until API response and proceed to the next code
+            - if finished : ready to put data from js into HTML 
+
+        3. json 
+        - data(object) comes from server : is in json format 
+            - need to convert to another format to utillize it (xxx.json())
+
+-->
